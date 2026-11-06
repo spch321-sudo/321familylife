@@ -30,7 +30,7 @@ window.XZM_SC = {'停止':'停止','原回答已不在對話中':'原回答已�
   /* T(繁體, English)；簡體從 window.XZM_SC（build 時由系統 ICU 產生的對照表）查，沒有就用 adapter.toSC */
   function T(zh, en) {
     var l = lang();
-    if (l === 'en') return en;
+    if (l === 'en') return window.KOT ? window.KOT(en) : en;
     if (l === 'sc') {
       var m = window.XZM_SC && window.XZM_SC[zh];
       if (m) return m;
@@ -1354,7 +1354,7 @@ XZM.preset.mix2 = function (o) {
       try {
         if (!window.speechSynthesis) return done();
         var u = new SpeechSynthesisUtterance(text), l = g(function () { return L(); }, 'zh');
-        u.lang = l === 'en' ? 'en-US' : (l === 'zs' ? 'zh-CN' : 'zh-TW'); u.rate = 1;
+        u.lang = document.documentElement.getAttribute('lang') === 'ko' ? 'ko-KR' : l === 'en' ? 'en-US' : (l === 'zs' ? 'zh-CN' : 'zh-TW'); u.rate = 1;
         u.onend = u.onerror = function () { done(); };
         speechSynthesis.speak(u);
       } catch (e) { done(); }
