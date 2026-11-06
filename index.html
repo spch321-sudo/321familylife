@@ -332,7 +332,7 @@ function lid(w,d){return 'w'+w+'d'+d;}
 function parseId(id){var m=/^w(\d+)d(\d)$/.exec(id);return m?{w:+m[1],d:+m[2]}:null;}
 var KO_WEEKS=(function(){var a=[];for(var i=1;i<=52;i++)a.push(i);return a;})();
 var PAR_L=[['zh','繁','zh-Hant'],['zs','简','zh-Hans'],['en','EN','en'],['ko','한','ko']];
-function parOn(){return S.par&&S.par!==LG()?S.par:'';}
+function parOn(){return S.par&&S.par!==LG()?S.par:'';}window.XZPAR_HOST={on:function(){return parOn();}};
 function parLesson(L){var g=parOn();if(!g||!WK[g]||!WK[g][L.w])return null;var o=WK[g][L.w];if(o.zhFallback)return null;return o.lessons[L.day-1]||null;}
 function parTx(t){t=String(t==null?'':t);var g=parOn();return (g==='zh'||g==='zs')&&S.gw!=='上帝'?t.replace(/上帝/g,'神'):t;}
 function parLang(){var g=parOn(),r='en';each(PAR_L,function(x){if(x[0]===g)r=x[2];});return r;}
@@ -7184,4 +7184,5 @@ window.GXA_FACTORY();
 })();
 </script>
 <script src="xzm.js?v=xzm1103"></script>
+<script src="xzpar.js?v=1"></script>
 <script>try{XZM.install(XZM.preset.mix());}catch(e){}</script>
