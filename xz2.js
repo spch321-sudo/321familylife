@@ -34,7 +34,7 @@
   const LSK = () => (O.pfx || '') + 'xz2';
   const lg = () => {
     let v = ''; try { v = String(O.lang ? O.lang() : (document.documentElement.getAttribute('lang') || 'zh')); } catch (e) {}
-    if (/^en/i.test(v)) return 'en';
+    if (/^(en|ko)/i.test(v)) return 'en';
     if (/hans|^zs$|^sc$|cn$|^zh-sg/i.test(v)) return 'zs';
     return 'zh';
   };

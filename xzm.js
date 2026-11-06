@@ -1074,7 +1074,7 @@ XZM.preset.sage = function (o) {
   }
 
   var A = {
-    lang: function () { var l = document.documentElement.lang || ''; return /^en/i.test(l) ? 'en' : (/Hans|CN/i.test(l) ? 'sc' : 'tc'); },
+    lang: function () { var l = document.documentElement.lang || ''; return /^(en|ko)/i.test(l) ? 'en' : (/Hans|CN/i.test(l) ? 'sc' : 'tc'); },
     toast: function () { },
     msgs: function () { return []; },
     isDone: function () { return false; },
@@ -1441,7 +1441,7 @@ XZM.preset.mix2 = function (o) {
   }
   function textFrom(el) {
     var node = el.closest && el.closest('.xzm'), all = node ? arr(node.querySelectorAll('.xzs')) : [el], i = all.indexOf(el), t = '', j;
-    for (j = Math.max(0, i); j < all.length && t.length < 6000; j++) t += (t && /^en/i.test(document.documentElement.lang || '') ? ' ' : '') + X.sentText(all[j]);
+    for (j = Math.max(0, i); j < all.length && t.length < 6000; j++) t += (t && /^(en|ko)/i.test(document.documentElement.lang || '') ? ' ' : '') + X.sentText(all[j]);
     return t;
   }
   var attach0 = A.marks.attach;
